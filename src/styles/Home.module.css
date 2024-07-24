@@ -1,37 +1,38 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  padding: 6rem;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.description {
-  display: inherit;
-  justify-content: inherit;
-  align-items: inherit;
-  font-size: 0.85rem;
-  max-width: var(--max-width);
+.listWrapper {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 0 20px;
+  scrollbar-gutter: stable both-edges;
   width: 100%;
-  z-index: 2;
-  font-family: var(--font-mono);
 }
 
-.description a {
+.listWrapper > * {
+  margin-inline: auto;
+  width: 100%;
+  overflow: hidden;
+}
+
+.header, .footer {
+  height: 60px;
+  background-color: #000;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  width: 100%;
+  padding-inline: 20px;
+  column-gap: 10px
 }
 
-.description p {
-  position: relative;
-  margin: 0;
-  padding: 1rem;
-  background-color: rgba(var(--callout-rgb), 0.5);
-  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
-  border-radius: var(--border-radius);
+.footer > button {
+  flex: 1;
 }
 
 .code {
@@ -39,7 +40,7 @@
   font-family: var(--font-mono);
 }
 
-.grid {
+.grid > div {
   display: grid;
   grid-template-columns: repeat(4, minmax(25%, auto));
   max-width: 100%;
@@ -47,6 +48,9 @@
 }
 
 .card {
+  max-width: 80ch;
+  overflow: hidden;
+  margin-inline: auto;
   padding: 1rem 1.2rem;
   border-radius: var(--border-radius);
   background: rgba(var(--card-rgb), 0);
@@ -69,15 +73,18 @@
   opacity: 0.6;
   font-size: 0.9rem;
   line-height: 1.5;
-  max-width: 30ch;
+  max-width: 100%;
 }
 
 .center {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   padding: 4rem 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: blur(3px);
 }
 
 .center::before {
@@ -127,11 +134,23 @@
 
 /* Mobile */
 @media (max-width: 700px) {
-  .content {
-    padding: 4rem;
+  .main {
+    padding: 2rem;
   }
 
-  .grid {
+  .footer {
+    flex-direction: column;
+    row-gap: 5px;
+    height: auto;
+
+  }
+
+  .footer > button {
+    flex: 1;
+    width: 100%;
+  }
+
+  .grid > div {
     grid-template-columns: 1fr;
     margin-bottom: 120px;
     max-width: 320px;
@@ -147,7 +166,7 @@
   }
 
   .center {
-    padding: 8rem 0 6rem;
+    display: none;
   }
 
   .center::before {
@@ -204,7 +223,7 @@
 
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
-  .grid {
+  .grid > div {
     grid-template-columns: repeat(2, 50%);
   }
 }
