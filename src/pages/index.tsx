@@ -1,10 +1,11 @@
 import { useState, useCallback, useRef } from "react";
-import { TransitionGroup } from "react-transition-group";
-import { Button, Image } from "@/components";
-import { alpha, Box, List, ListItem, Slide, Typography } from "@mui/material";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import { TransitionGroup } from "react-transition-group";
+import { alpha, Box, List, ListItem, Slide, Typography } from "@mui/material";
 import { SnackbarProvider, useSnackbar } from "notistack";
+
+import { Button, Image } from "@/components";
+import styles from "../styles/Home.module.css";
 
 export default function TransitionGroupExample() {
   const { enqueueSnackbar } = useSnackbar();
@@ -41,7 +42,6 @@ export default function TransitionGroupExample() {
     [
       enqueueSnackbar,
       images,
-      scrollToBottom,
       setImages,
       setLoading,
     ]
@@ -65,7 +65,6 @@ export default function TransitionGroupExample() {
     },
     [
       enqueueSnackbar,
-      scrollToBottom,
       setImages,
       setLoading,
     ]
@@ -107,7 +106,7 @@ export default function TransitionGroupExample() {
             }}
           >
             <Typography className={styles.code}>
-              {loading ? "Generating images..." : "No Image to display. Click 'Add an Image' to get started."}
+              {loading ? "Generating images..." : "No Image to display. Click 'Add an Image' below to get started."}
             </Typography>
           </Box>}
           <List>
@@ -124,7 +123,13 @@ export default function TransitionGroupExample() {
                   pointerEvents: images.length >= 5 || loading ? "none" : "auto",
                 }}
               >
-                <Typography ref={addBtnRef} className={styles.code}>
+                <Typography
+                  ref={addBtnRef}
+                  className={styles.code}
+                  sx={{
+                    fontSize: "20px !important",
+                  }}
+                >
                   + Add an Image
                 </Typography>
               </ListItem>

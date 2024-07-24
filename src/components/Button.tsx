@@ -1,5 +1,5 @@
 import { forwardRef, ForwardRefExoticComponent, RefAttributes } from "react";
-import { Box, Button as MaterialButton, ButtonProps, CircularProgress } from "@mui/material";
+import { Button as MaterialButton, ButtonProps } from "@mui/material";
 
 
 interface CustomButtonProps extends ButtonProps {

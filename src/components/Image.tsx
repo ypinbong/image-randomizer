@@ -1,5 +1,6 @@
 import { Avatar, Box, ListItem, Skeleton, Tooltip, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
+
 import styles from "../styles/Home.module.css";
 
 export const Image = (url: string) => {
