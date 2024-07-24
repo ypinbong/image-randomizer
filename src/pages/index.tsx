@@ -38,7 +38,13 @@ export default function TransitionGroupExample() {
       }
       setLoading(false);
     },
-    [images]
+    [
+      enqueueSnackbar,
+      images,
+      scrollToBottom,
+      setImages,
+      setLoading,
+    ]
   );
 
   const fetchAnImage = useCallback(
@@ -57,7 +63,12 @@ export default function TransitionGroupExample() {
       }
       setLoading(false);
     },
-    []
+    [
+      enqueueSnackbar,
+      scrollToBottom,
+      setImages,
+      setLoading,
+    ]
   );
 
   const removeRandomImage = useCallback(
@@ -67,7 +78,10 @@ export default function TransitionGroupExample() {
       const randomIndex = Math.floor(Math.random() * images.length);
       setImages(prev => [...prev.filter((_, index) => index !== randomIndex)]);
     },
-    [images]
+    [
+      images,
+      setImages
+    ]
   );
 
   return (
