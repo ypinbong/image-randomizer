@@ -6,14 +6,13 @@ export const Image = (url: string) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const copyToClipboard = () => {
-    console.log("Image.tsx ~ line 9: url:", url);
     navigator.clipboard.writeText(url).then(() => {
       enqueueSnackbar("URL copied to clipboard.", { variant: "success" });
     }).catch(err => {
       enqueueSnackbar("Failed to copy text.", { variant: "success" });
     });
   };
-  
+
   return (
     <ListItem
       onClick={() => {
