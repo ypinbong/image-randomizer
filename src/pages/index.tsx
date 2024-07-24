@@ -10,13 +10,14 @@ export default function TransitionGroupExample() {
   const { enqueueSnackbar } = useSnackbar();
   const [images, setImages] = useState<string[]>([])
   const [loading, setLoading] = useState(false);
-  const listRef = useRef<HTMLDivElement>(null);
   const addBtnRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    if (addBtnRef.current) {
-      addBtnRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
-    }
+    setTimeout(() => {
+      if (addBtnRef.current) {
+        addBtnRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+      }
+    }, 500);
   };
 
   const fetchFiveImages = useCallback(
@@ -84,7 +85,7 @@ export default function TransitionGroupExample() {
             Random Image Generator
           </Typography>
         </div>
-        <div ref={listRef} className={styles.listWrapper}>
+        <div className={styles.listWrapper}>
           {images.length === 0 && <Box
             className={styles.card}
             sx={{
@@ -92,7 +93,7 @@ export default function TransitionGroupExample() {
             }}
           >
             <Typography className={styles.code}>
-              {loading ? "Generating images..." : "No Images Found"}
+              {loading ? "Generating images..." : "No Image to display. Click 'Add an Image' to get started."}
             </Typography>
           </Box>}
           <List>
@@ -118,9 +119,16 @@ export default function TransitionGroupExample() {
         </div>
         <div className={styles.footer}>
           <Button
-            variant="outlined"
+            variant="contained"
             disabled={loading}
             onClick={fetchFiveImages}
+            sx={{
+              backgroundColor: "#fff !important",
+              color: "#000 !important",
+              "&:hover": {
+                backgroundColor: `${alpha("#fff", 0.70)} !important`,
+              }
+            }}
           >
             <Typography className={styles.code} textTransform="none">
               {images.length < 5 ? `Add ${5 - images.length} Images` : "Randomize Images"}
@@ -130,9 +138,17 @@ export default function TransitionGroupExample() {
             variant="outlined"
             onClick={removeRandomImage}
             disabled={loading || images.length === 0}
+            sx={{
+              borderColor: "#fff !important",
+              color: "#fff !important",
+              "&:hover": {
+                borderColor: `${alpha("#fff", 0.70)} !important`,
+                color: `${alpha("#fff", 0.70)} !important`,
+              }
+            }}
           >
             <Typography className={styles.code} component="span" textTransform="none">
-              Remove Random Image
+              Remove a Random Image
             </Typography>
           </Button>
         </div>

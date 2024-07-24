@@ -19,16 +19,24 @@ export const Image = (url: string) => {
         copyToClipboard();
       }}
       className={styles.card}
+      sx={theme => ({
+        [theme.breakpoints.down("md")]: {
+          paddingBlock: "5px !important",
+        }
+      })}
     >
       <Tooltip title="Click to copy this link!" followCursor>
         <Box
-          sx={{
+          sx={theme => ({
             display: "flex",
             columnGap: "10px",
             alignItems: "center",
             overflow: "hidden",
-            cursor: "pointer"
-          }}
+            cursor: "pointer",
+            [theme.breakpoints.down("sm")]: {
+              flexDirection: "column",
+            }
+          })}
         >
           <Avatar
             src={url}
@@ -40,7 +48,18 @@ export const Image = (url: string) => {
           >
             <Skeleton variant="circular" width={40} height={40} />
           </Avatar>
-          <Typography className={styles.code} overflow="hidden" whiteSpace="nowrap" textOverflow="ellipsis">
+          <Typography
+            className={styles.code}
+            overflow="hidden"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            sx={theme => ({
+              [theme.breakpoints.down("sm")]: {
+                paddingTop: "5px",
+                fontSize: "12px !important",
+              }
+            })}
+          >
             {url}
           </Typography>
         </Box>
