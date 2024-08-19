@@ -13,6 +13,13 @@ export default function TransitionGroupExample() {
   const [loading, setLoading] = useState(false);
   const addBtnRef = useRef<HTMLDivElement>(null);
 
+  //TODO: Implement copy a formatted json of the images generated
+  /* 
+    1. Add a button to copy the formatted json of the images generated
+    2. enable dynamic dimensions for the images generated
+    3. enable the user to edit the max number of images that can be generated
+  */
+
   const scrollToBottom = () => {
     setTimeout(() => {
       if (addBtnRef.current) {
