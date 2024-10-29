@@ -1,7 +1,6 @@
 import { forwardRef, ForwardRefExoticComponent, RefAttributes } from "react";
 import { Button as MaterialButton, ButtonProps } from "@mui/material";
 
-
 interface CustomButtonProps extends ButtonProps {
   loading?: boolean;
   spinnerSize?: number;
